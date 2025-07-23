@@ -1,0 +1,128 @@
+import React from 'react'; import './App.css'; function Navbar() { return (
+<nav className="navbar">
+<h1>My Portfolio</h1>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+);
+}
+function Home() { return (
+<section className="section" id="home">
+<h2 className="home-title">Welcome to My Portfolio</h2>
+<p>I am a passionate developer.</p>
+<a href="#projects" className="home-button">View Projects</a>
+</section>
+);
+}
+function About() {
+ 
+return (
+<section className="section" id="about">
+<h2>About Me</h2>
+<p>I build modern and responsive web applications with a focus on performance and clean UI.</p>
+</section>
+);
+}
+function Projects() { return (
+<section className="section" id="projects">
+<h2>My Projects</h2>
+<div className="project-grid">
+<div className="project-card">
+<h3>Project One</h3>
+<p>React-based web application with user authentication.</p>
+</div>
+<div className="project-card">
+<h3>Project Two</h3>
+<p>Portfolio site built with HTML, CSS, and JavaScript.</p>
+</div>
+</div>
+</section>
+);
+}
+function Contact() { return (
+<section className="section" id="contact">
+<h2>Contact Me</h2>
+<form className="contact-form">
+<input type="text" placeholder="Your Name" required />
+<input type="email" placeholder="Your Email" required />
+<textarea placeholder="Your Message" rows="4" required></textarea>
+<button type="submit">Send Message</button>
+</form>
+</section>
+);
+}
+function App() { return (
+<div>
+<Navbar />
+<main>
+<Home />
+<About />
+<Projects />
+ 
+<Contact />
+</main>
+</div>
+);
+}
+export default App;
+App.css body { margin: 0;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: #fff;
+}
+.navbar { position: fixed; width: 100%;
+background: rgba(0, 0, 0, 0.8); padding: 15px 30px;
+display: flex;
+justify-content: space-between; align-items: center;
+z-index: 100;
+}
+.navbar h1 {
+font-size: 24px; font-weight: bold;
+}
+.navbar ul { display: flex; list-style: none; gap: 20px;
+}
+.navbar ul li a { color: white;
+text-decoration: none; font-weight: 500; transition: color 0.3s;
+}
+.navbar ul li a:hover { color: #ffc107;
+}
+.section {
+min-height: 100vh; padding: 80px 20px 40px; text-align: center;
+}
+ 
+.home-title { font-size: 48px;
+margin-bottom: 20px;
+}
+.home-button {
+background-color: #ffc107; color: black;
+padding: 10px 25px; border-radius: 8px; text-decoration: none; font-weight: 600;
+transition: background 0.3s;
+}
+.home-button:hover { background-color: #e0a800;
+}
+.project-grid { display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;
+margin-top: 40px;
+}
+.project-card {
+background-color: #1f1f1f; padding: 20px;
+border-radius: 12px;
+box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.3s;
+}
+.project-card:hover { transform: scale(1.05);
+}
+.contact-form input,
+.contact-form textarea { width: 100%; padding: 12px; margin: 10px 0;
+background-color: #333; color: white;
+border: none; border-radius: 6px;
+}
+.contact-form button { background-color: #ffc107; color: black;
+padding: 10px 25px;
+ 
+border: none; border-radius: 6px; font-weight: bold; cursor: pointer;
+}
+.contact-form button:hover { background-color: #e0a800;
+}
+
