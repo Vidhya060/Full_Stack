@@ -1,0 +1,85 @@
+import React, { useState } from "react";
+import "./App.css";
+function App() {
+const [input, setInput] = useState("");
+const handleClick = (value) => {
+if (value === "C") {
+setInput("");
+} else if (value === "=") {
+try {
+const result = eval(input.replace(/×/g, "*").replace(/÷/g, "/"));
+setInput(result.toString());
+} catch {
+setInput("Error");
+}
+} else {
+setInput(input + value);
+}
+};
+const buttons = [
+"C", "÷", "×", "←",
+"7", "8", "9", "-",
+"4", "5", "6", "+",
+"1", "2", "3", "=",
+"0", "."
+];
+return (
+<div className="calculator">
+<div className="display">{input || "0"}</div>
+<div className="buttons">
+{buttons.map((btn, index) => (
+<button
+key={index}
+onClick={() =>
+btn === "←"
+? setInput(input.slice(0, -1))
+: handleClick(btn)
+}>
+{btn}
+</button>
+))}
+</div>
+</div>
+);
+}
+export default App;
+App.css
+body {
+margin: 0;
+font-family: sans-serif;
+background: #f0f0f0;
+}
+.calculator {
+width: 320px;
+margin: 50px auto;
+border-radius: 20px;
+overflow: hidden;
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+background-color: #000;
+}
+.display {
+background: #111;
+color: #0f0;
+font-size: 2rem;
+text-align: right;
+padding: 20px;
+box-sizing: border-box;
+}
+.buttons {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+}
+button {
+padding: 20px;
+font-size: 1.5rem;
+border: 1px solid #222;
+background-color: #333;
+color: #fff;
+cursor: pointer;
+transition: 0.2s;}
+button:hover {
+background-color: #444;}
+button:nth-child(4n) {
+background-color: #ff9500;}
+button:nth-child(4n):hover {
+background-color: #e58900;}
